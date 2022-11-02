@@ -1,0 +1,56 @@
+<mat-card>
+    <h3 class="doc">Doctor Details</h3>
+</mat-card>
+
+
+<div class="mat-elevation-z8 edtable" >
+    <table mat-table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let i=index">{{i+1}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Doctor ID">
+            <th mat-header-cell *matHeaderCellDef> Doctor ID </th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Doctor Name">
+            <th mat-header-cell *matHeaderCellDef> Doctor Name </th>
+            <td mat-cell *matCellDef="let element">{{element.firstName}} {{element.lastName}}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Date of Register">
+            <th mat-header-cell *matHeaderCellDef>Date of Register </th>
+            <td mat-cell *matCellDef="let element">{{element.createdDate}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef>Action </th>
+            <td mat-cell *matCellDef="let d"> 
+                <button mat-icon-button style="color:#2970db;" aria-label="Example icon button with a menu icon" (click)="edit(d)">
+                    <mat-icon>edit</mat-icon>
+                  </button> 
+                  <button mat-icon-button color="warn" aria-label="Example icon button with a menu icon" (click)="delete(d)">
+                    <mat-icon>delete</mat-icon>
+                  </button>  
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator  [pageSizeOptions]="[3, 5, 10, 100]" showFirstLastButtons
+    aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+</div>

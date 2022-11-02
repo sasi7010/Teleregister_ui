@@ -1,0 +1,55 @@
+<mat-card style="background-color: rgb(15, 134, 99);">
+    <h3 style="text-align: center;color: white;">Add Doctor</h3>
+</mat-card>
+
+
+<form [formGroup]="doctorform">
+    <div class="row" style="margin-top: 2%;">
+        <div class="col-md-5">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>First Name</mat-label>
+                <input matInput  placeholder="" formControlName="firstName" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-5">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Last Name</mat-label>
+                <input matInput  placeholder="" formControlName="lastName" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-5">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Email Id</mat-label>
+                <input matInput  placeholder="" formControlName="email" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-5">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Mobile Number</mat-label>
+                <input matInput  placeholder="" formControlName="phoneNumber" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-5">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>DOB</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dob" >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-md-5">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender" placeholder="Gender" required>
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Others">Others</mat-option>
+                  </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div align="end">
+        <button mat-raised-button color="primary" mat-dialog-close (click)="save()">Save</button>
+        <button class="close" mat-raised-button color="warn" mat-dialog-close >Close</button>
+    </div>
+</form>

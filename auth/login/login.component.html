@@ -1,0 +1,54 @@
+<body style="background-color: rgb(126, 122, 122);">
+    <div class="row">
+        <div class="col-md-8 d-none d-md-block"></div>
+        <div class="col-md-4" style="min-height: 100vh; background-color: white;">
+            <div class="login-form-content">
+                <div class="logo-warapper">
+                    <img src="../../../assets/image/Medetellogo.png">
+                    <!-- <img src="../../../assets/images/LOGO.png" style="background-color: aliceblue;"> -->
+                    <script src="https://apis.google.com/js/platform.js" async defer></script>
+                </div>
+                <form [formGroup]="Loginform" autocomplete="off">
+                    <div class="login-wrapper">
+                        <span class="head">Login</span>
+                        <div class="field-wrapper">
+                            <mat-form-field class="example-full-width" appearance="legacy">
+                                <mat-label>Mobile Number</mat-label>
+                                <input matInput formControlName="phoneNumber" #input maxlength="10" minlength="10"
+                                    required />
+                                <mat-error *ngIf="checkError('phoneNumber', 'required')">Mobile Number is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="field-wrapper">
+                            <mat-form-field class="example-full-width" appearance="legacy">
+                                <mat-label>Password</mat-label>
+                                <input matInput type="password" formControlName="password" #input maxlength="15"
+                                    minlength="8" required />
+                                <mat-error *ngIf="checkError('password', 'required')">password is required and minmum 8 charactors</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-check form-check-flat form-check-primary">
+                            <mat-checkbox> Remember me</mat-checkbox>
+                        </div>
+                        <div class="field-wrapper text-center">
+                            <button mat-raised-button color="primary" style="width: 100%; margin: 5px;"
+                                (click)="login()" >Login</button>
+                            <button mat-raised-button color="warn" style="width: 100%; margin: 5px;"
+                                routerLink="/auth/register">Register</button>
+                            <button mat-button color="primary" style="width: 100%; margin: 5px;"
+                                routerLink="/auth/login">Forgot Password</button>
+                        </div>
+                        <div class="field-wrapper link-holder">
+                            <!-- <a href="javascript:void(0);" routerLink="/auth/forgot">Forgot Password ?</a> -->
+                            <!-- <a href="javascript:void(0);" routerLink="/auth/register">New User ?</a> -->
+                            <span class="clearfix"></span>
+                            <span class="clearfix"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

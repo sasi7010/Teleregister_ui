@@ -1,0 +1,78 @@
+<p>
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>Hospital</span>
+        <span class="example-spacer"></span>
+        <button mat-button (click)="add()">Add patient</button>
+        <button mat-button (click)="doct()">Add doctor</button>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with more_vert icon" (click)="logout()">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </mat-toolbar>
+</p>
+
+<mat-card>
+    <h3 class="doc">Patient Details</h3>
+</mat-card>
+
+
+<div class="mat-elevation-z8 edtable" >
+    <table mat-table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let i=index">{{i+1}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Patient ID">
+            <th mat-header-cell *matHeaderCellDef> Patient ID </th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Patient Name">
+            <th mat-header-cell *matHeaderCellDef> Patient Name </th>
+            <td mat-cell *matCellDef="let element">{{element.firstName}} {{element.lastName}}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Date of Register">
+            <th mat-header-cell *matHeaderCellDef>Date of Register </th>
+            <td mat-cell *matCellDef="let element">{{element.createdDate}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef>Action </th>
+            <td mat-cell *matCellDef="let d"> 
+                <button mat-icon-button style="color:#2970db;" aria-label="Example icon button with a menu icon" (click)="edit(d)">
+                    <mat-icon>edit</mat-icon>
+                  </button> 
+                  <button mat-icon-button color="warn" aria-label="Example icon button with a menu icon" (click)="delete(d)">
+                    <mat-icon>delete</mat-icon>
+                  </button>  
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator  [pageSizeOptions]="[3, 5, 10, 100]" showFirstLastButtons
+    aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+</div>
+
+<div style="margin-top: 2%;">
+    <app-doctor-table></app-doctor-table>
+</div>
